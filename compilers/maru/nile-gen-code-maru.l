@@ -232,7 +232,9 @@
   (let ((source-file-name (++ module-name ".k"))
         (env              (nile-gen-code-env module-name)))
     (println "Source file name: "source-file-name)
-    (out env "(define (sqrtf (float float) *) (extern sqrtf))\n\n")
+    (out env "(define (sqrtf (float float) *) (extern sqrtf))\n")
+    (out env "(define (floorf (float float) *) (extern floorf))\n")
+    (out env "(define (ceilf (float float) *) (extern ceilf))\n\n")
     (map-with gen-code ast env)
     (contents-to-file-named (port-contents (out-port env)) source-file-name)))
 
